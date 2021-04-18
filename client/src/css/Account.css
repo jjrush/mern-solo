@@ -1,0 +1,42 @@
+.update-btn {
+    margin-top: 10px;
+    margin-left: 140px;
+}
+
+.fname-field {
+    margin-left: 9px;
+}
+.lname-field {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.email-field {
+    margin-top: 10px;
+    margin-left: 45px;
+}
+
+.address-field {
+    margin-top: 10px;
+    margin-left: 25px;
+}
+
+.city-field {
+    margin-top: 10px;
+    margin-left: 55px;
+}
+
+.state-field {
+    margin-top: 10px;
+    margin-left: 46px;
+}
+
+.cancel-btn-account {
+    margin-top: 10px;
+}
+
+.account-info {
+    margin-left: 100px;
+}
+
+

@@ -4,6 +4,7 @@ import axios from 'axios';
 import '../css/Order.css'
 
 const Order = (props) => {
+    const { order, setOrder } = props;
     const [, updateState] = useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
 
@@ -72,15 +73,6 @@ const Order = (props) => {
         },
     })
 
-    const [ order, setOrder ] = useState({
-        date: "",
-        method: "carryout",
-        size: "large", 
-        crust: "regular", 
-        quantity: 1, 
-        toppings: {},
-    })
-
     const handleSetOrder = (t) => {
         setOrder({
             ...order,
@@ -103,7 +95,6 @@ const Order = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-
         axios.post("http://localhost:8000/api/order", {order})
         .then((res) => {
             if(res.data.errors) {
@@ -111,7 +102,7 @@ const Order = (props) => {
             }
             else {
                 console.log(res.data)
-                navigate("/");
+                navigate("/checkout");
             }
         })
         .catch((err) => {
@@ -124,13 +115,13 @@ const Order = (props) => {
     }
 
     const randSetSize = (n) => {
-        console.log(n)
-        let size = order.size;
+        console.log("size: " + n)
+        let size = "";
         if( n === 0 )
             size="xlarge"
-        if( n === 1 )
+        else if( n === 1 )
             size="large"
-        if( n === 2 )
+        else if( n === 2 )
             size="medium"
         else
             size="personal"
@@ -139,13 +130,13 @@ const Order = (props) => {
     }
 
     const randSetCrust = (n) => {
-        console.log(n)
+        console.log("crust: " + n)
         let crust = "";
         if( n === 0 )
             crust="thin"
-        if( n === 1 )
+        else if( n === 1 )
             crust="regular"
-        if( n === 2 )
+        else if( n === 2 )
             crust="stuffed"
         else
             crust="deepdish"
@@ -214,8 +205,8 @@ const Order = (props) => {
         }
         if ( random )
         {
-            randSetSize(getRand(3));
-            randSetCrust(getRand(3));
+            randSetSize(getRand(4));
+            randSetCrust(getRand(4));
             randSetToppings();
             forceUpdate();
             console.log(order);
@@ -294,7 +285,7 @@ const Order = (props) => {
                         <label className="checkbox-label">Canadian Bacon</label>
                     </div>
                 </div>
-                <button className="submit-btn" type="submit">Checkout</button>
+                <button className="checkout-btn" type="submit">Checkout</button>
             </form>
             <button className="cancel-btn" onClick={ () => navigate("/") }>Cancel</button>
         </div>
