@@ -3,7 +3,7 @@ import { navigate } from '@reach/router';
 import '../css/QuickAction.css'
 
 const QuickAction = (props) => {
-    const { path, text } = props;
+    const { path, text, setRandom, setFavorite } = props;
 
     const handleOnClick = () => {
         // check the text to determine which button they clicked
@@ -13,14 +13,14 @@ const QuickAction = (props) => {
         } else if ( text === "Re-order Favorite" ) 
         {
             // fetch their favorite then display it on the ordering page
+            setFavorite(true);
             navigate("/fav")
         } else if ( text === "Random Pizza" ) 
         {
             // randomly choose toppings on order page
-            navigate("/order")
+            setRandom(true);
+            navigate("/random")
         } 
-        console.log(path)
-        // navigate({path})
     }
 
 

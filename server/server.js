@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const port = process.env.DB_PORT;
+const port = 8000;
 const cookieParser = require('cookie-parser');
 
 app.use(express.json());
@@ -19,8 +19,7 @@ app.use(cookieParser());
 require('./config/mongoose.config');
 
 // setup routes
-require('./routes/karaoke.routes')(app);
 require('./routes/user.routes')(app);
 
 
-const server = app.listen(port, () => console.log("Listenting on port: " + port));
+const server = app.listen(port, () => console.log("Listening on port: " + port));
