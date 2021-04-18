@@ -1,8 +1,11 @@
 import React from 'react';
 import { navigate } from '@reach/router';
 import axios from 'axios';
+import '../css/Header.css';
 
 const Header = (props) => {
+    const { loggedIn } = props;
+    console.log("LoggedIn: " + loggedIn);
     const logout = (e) => {
         e.preventDefault();
         axios.post("http://localhost:8000/api/user/logout", { 
@@ -12,24 +15,29 @@ const Header = (props) => {
         })
         .then((res) => {
             console.log(res.data);
-            navigate("/karaoke");
+            navigate("/");
         })
         .catch(err => {
             console.log(err);
         });
     };
 
+    const handleButton = (e) => {
+        if ( loggedIn )
+        {
+            logout(e);
+        } else {
+            navigate("/login");
+        }
+    }
+
     return (
-        <div>
-        <h1>Welcome to my Karaoke Collection</h1>
-        <div>
-            <button onClick={ () => navigate("/karaoke")}>List All</button>
-            <button onClick={ () => navigate("/karaoke/new")}>Create New</button>
-            <button onClick={() => navigate("/logreg")}>Login to edit and add songs</button>
-            <button onClick={(e) => logout(e) }>Logout</button>
-            {/* <button onClick={ () => navigate("/karaoke/:id")}>List All</button> */}
-            {/* <button onClick={ () => navigate("/karaoke")}>List All</button> */}
-        </div>
+        <div id="header">
+            <button className="header-btn" onClick={ () => navigate("/")}>Home</button>
+            <button className="header-btn" onClick={ () => navigate("/order")}>Order</button>
+            <button className="title-btn" onClick={ () => navigate("/")}><h1>Pizza Pete's</h1></button>
+            <button className="header-btn" onClick={() => navigate("/account")}>Account</button>
+            <button className="header-btn" onClick={(e) => handleButton(e)}>{loggedIn ? "Logout" : "Login"}</button>
         </div>
     )
 };

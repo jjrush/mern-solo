@@ -1,0 +1,15 @@
+#header {
+    /* border: 2px solid black; */
+    display: inline;
+    background-color: f2f2f2;
+    height: 10px;
+}
+
+.header-btn {
+    background-color: #fc6a03;
+}
+
+.title-btn {
+    background-color: #f2f2f2;
+    color: black;
+}

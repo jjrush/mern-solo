@@ -1,59 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { navigate } from '@reach/router';
 import axios from 'axios';
 
-const Edit = (props) => {
+const Order = (props) => {
+
     const [ licensed, setLicenced ] = useState(true);
-    const [ title, setTitle ] = useState("");
-    const [ artist, setArtist ] = useState("");
+    const [ method, setMethod ] = useState("carryout");
+    const [ size, setSize ] = useState("");
     const [ albumArtUrl, setAlbumArtUrl ] = useState("");
     const [ videoUrl, setVideoUrl ] = useState("");
     const [ genre, setGenre ] = useState("Rap");
     const [ year, setYear ] = useState("");
     const [ errs, setErrs ] = useState({});
 
-    useEffect(() => {
-        axios.get('http://localhost:8000/api/karaoke/' + props.id)
-        .then((res) => {
-            console.log(res.data);
-            // setSong(res.data);
-            let song = res.data;
-            setLicenced(song.licensed);
-            setTitle(song.title);
-            setArtist(song.artist);
-            setAlbumArtUrl(song.albumArtUrl);
-            setVideoUrl(song.videoUrl);
-            setGenre(song.genre);
-            setYear(song.year);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-        // adding props.id to remove the linter's error saying I need to add props.id
-        //    this is NOT required
-    }, [ props.id ]);
-
     const submitHandler = (e) => {
         e.preventDefault();
 
-        axios.put("http://localhost:8000/api/karaoke/" + props.id, {
-        licensed: licensed,
-        title: title,
-        artist: artist,
-        albumArtUrl: albumArtUrl,
-        videoUrl: videoUrl,
-        // if the key and the value use the same name, you can skip the "key: "
-        genre,
-        year,
+        axios.post("http://localhost:8000/api/order", {
+
         })
         .then((res) => {
             if(res.data.errors) {
-            console.log(res.data.errors);
-            setErrs(res.data.errors);
+                console.log(res.data.errors);
+                setErrs(res.data.errors);
             }
             else {
-            console.log(res.data)
-            navigate("/karaoke/" + props.id);
+                console.log(res.data)
+                navigate("/");
             }
         })
         .catch((err) => {
@@ -62,41 +35,32 @@ const Edit = (props) => {
     }
     return (
         <div>
-        <h1>Edit Song</h1>
+        <h2>Craft-A-Pizza</h2>
         <form onSubmit={submitHandler}>
             <div>
-            <input type="checkbox"
-                name="licensed"
-                checked={licensed}
-                onChange={ () => setLicenced( !licensed ) }
-                />
-            <label>Is Licensed?</label>
+                <label>Method: </label>
+                <select name="method">
+                    <option value="carryout">Carryout</option>
+                    <option value="delivery">Delivery</option>
+                    value={method}
+                    onChange={ (e) => setMethod( e.target.value ) }
+                </select>
             </div>
             <div>
-            <label>Title: </label>
-            <input type="text"
-                name="title"
-                value={title}
-                onChange={ (e) => setTitle( e.target.value ) }
-                />
-            {
-                errs.title ?
-                <span className="error-text">{errs.title.message}</span>
-                : null
-            }
-            </div>
-            <div>
-            <label>Artist: </label>
-            <input type="text"
-                name="artist"
-                value={artist}
-                onChange={ (e) => setArtist( e.target.value ) }
-                />
-            {
-                errs.artist ?
-                <span className="error-text">{errs.artist.message}</span>
-                : null
-            }
+                <label>Size: </label>
+                <select name="size">
+                    <option value="xlarge">Extra Large</option>
+                    <option value="large">Large</option>
+                    <option value="medium">Medium</option>
+                    <option value="personal">Personal</option>
+                    value={size}
+                    onChange={ (e) => setMethod( e.target.value ) }
+                </select>
+                {
+                    errs.artist ?
+                    <span className="error-text">{errs.artist.message}</span>
+                    : null
+                }
             </div>
             <div>
             <label>Album Art URL: </label>
@@ -158,7 +122,7 @@ const Edit = (props) => {
             }
             </div>
             <div>
-            <button type="submit">Update Song</button>
+            <button type="submit">Add Song</button>
             <button onClick={ () => navigate("/karaoke")}>Cancel</button>
             </div>
         </form>
@@ -166,4 +130,4 @@ const Edit = (props) => {
     )
 };
 
-export default Edit;
+export default Order;
