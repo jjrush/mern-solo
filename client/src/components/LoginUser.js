@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { navigate } from '@reach/router';
 
-const Login = () => {
+const LoginUser = (props) => {
+    const { loggedIn, setLoggedIn } = props;
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -21,7 +22,8 @@ const Login = () => {
         })
         .then((res) => {
             console.log(res.data);
-            navigate("/karaoke");
+            setLoggedIn(true);
+            navigate("/");
         })
         .catch(err => {
             console.log(err);
@@ -53,13 +55,12 @@ const Login = () => {
             />
             </div>
             <div className="center">
-            <button 
-                type="submit"
-            >Sign In</button>
+            <button className="sign-in-btn" type="submit">Sign In</button>
+            <button className="register-btn" onClick={() => navigate("/logreg")}>Create Account</button>
             </div>
         </form>
         </div>
     );
 };
 
-export default Login;
+export default LoginUser;

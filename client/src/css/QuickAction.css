@@ -1,0 +1,10 @@
+.quick-action {
+    display: inline-block;
+}
+
+.quick-action-btn {
+    width: 180px;
+    height: 150px;
+    display: inline-block;
+    background-color: #fc6a03;
+}
