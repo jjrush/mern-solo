@@ -17,6 +17,25 @@ module.exports = {
         })
     },
 
+    update: (req, res) => {
+        // console.log(req.params.id);
+        // console.log(req.body);
+        User.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true,
+        })
+        .then((item) => {
+            res.json(item);
+        })
+        .catch((err) => {
+            console.log("error found in update");
+            console.log(err);
+            res.json(err);
+        });
+    },
+
+
+
     login: (req, res) => {
         console.log(req.body);
 
@@ -48,7 +67,8 @@ module.exports = {
                     message: "Successfully logged in!",
                     userLoggedIn: {
                         userName: `${userRecord.firstName} ${userRecord.lastName}`,
-                    }
+                    },
+                    id: userRecord._id
                     })
                 } else {
                     // bad password
