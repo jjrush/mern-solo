@@ -15,7 +15,7 @@ const Account = (props) => {
     const submitHandler = (e) => {
         e.preventDefault();
 
-        axios.put("http://localhost:8000/api/karaoke/" + props.id, {
+        axios.put("http://localhost:8000/api/user/" + props.id, {
             firstName: firstName,
             lastName: lastName,
             email: email,
@@ -31,7 +31,7 @@ const Account = (props) => {
             }
             else {
                 console.log(res.data)
-                navigate("/karaoke/" + props.id);
+                navigate("/account/");
             }
         })
         .catch((err) => {
@@ -65,10 +65,11 @@ const Account = (props) => {
                             }
                         </div>
                         <div>
-                            <button type="submit">Update Song</button>
-                            <button onClick={ () => navigate("/karaoke")}>Cancel</button>
+                            <button type="submit">Update Info</button>
+                            
                         </div>
                     </form>
+                    <button onClick={ () => navigate("/")}>Cancel</button>
                 </div>
             :
             null

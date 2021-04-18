@@ -14,7 +14,7 @@ const QuickAction = (props) => {
         {
             // fetch their favorite then display it on the ordering page
             setFavorite(true);
-            navigate("/fav")
+            navigate("/favorite")
         } else if ( text === "Random Pizza" ) 
         {
             // randomly choose toppings on order page

@@ -10,6 +10,21 @@ const Order = (props) => {
     const [ quantity, setQuantity ] = useState(0);
     const [ toppings, setToppings ] = useState({});
 
+    const [ order, setOrder ] = useState({
+        method: "",
+        size: "", 
+        crust: "", 
+        quantity: 0, 
+        toppings: {},
+    })
+
+    const handleChange = (e) => {
+        setOrder({
+            ...order,
+            [e.target.name]: e.target.value,
+        })
+    }
+
     const submitHandler = (e) => {
         e.preventDefault();
 
@@ -29,35 +44,41 @@ const Order = (props) => {
             console.log(err);
         })
     }
+
+    const handleCancel = () => {
+        navigate("/");
+    }
+
     return (
         <div>
-        <h2>Craft-A-Pizza</h2>
-        <form onSubmit={submitHandler}>
-            <div>
-                <label>Method: </label>
-                <select name="method">
-                    <option value="carryout">Carryout</option>
-                    <option value="delivery">Delivery</option>
-                    value={method}
-                    onChange={ (e) => setMethod( e.target.value ) }
-                </select>
-            </div>
-            <div>
-                <label>Size: </label>
-                <select name="size">
-                    <option value="xlarge">Extra Large</option>
-                    <option value="large">Large</option>
-                    <option value="medium">Medium</option>
-                    <option value="personal">Personal</option>
-                    value={size}
-                    onChange={ (e) => setMethod( e.target.value ) }
-                </select>
-            </div>
-            <div>
-            <button type="submit">Add Song</button>
-            <button onClick={ () => navigate("/karaoke")}>Cancel</button>
-            </div>
-        </form>
+            <h2>Craft-A-Pizza</h2>
+            <form onSubmit={submitHandler}>
+                <div>
+                    <label>Method: </label>
+                    <select name="method">
+                        <option value="carryout">Carryout</option>
+                        <option value="delivery">Delivery</option>
+                        value={method}
+                        onChange={ (e) => setMethod( e.target.value ) }
+                    </select>
+                </div>
+                <div>
+                    <label>Size: </label>
+                    <select name="size">
+                        <option value="xlarge">Extra Large</option>
+                        <option value="large">Large</option>
+                        <option value="medium">Medium</option>
+                        <option value="personal">Personal</option>
+                        value={size}
+                        onChange={ (e) => setMethod( e.target.value ) }
+                    </select>
+                </div>
+                <div>
+                <button type="submit">Submit Order</button>
+                
+                </div>
+            </form>
+            <button onClick={ () => handleCancel() }>Cancel</button>
         </div>
     )
 };

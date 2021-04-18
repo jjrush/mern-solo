@@ -4,7 +4,7 @@ import ListAll from './components/ListAll';
 import Order from './components/Order';
 import AccountView from './views/AccountView';
 import { Router } from '@reach/router';
-import Login from './components/LoginUser';
+import Login from './views/Login';
 import Register from './views/Register';
 import Main from './views/Main';
 import { useState } from 'react';
@@ -26,8 +26,8 @@ function App() {
             <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} /> 
             <Router>
                 {/* default login/register page */}
-                <Login path="/login" loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
-                <Register path="/register" loggedIn={loggedIn} setLoggedIn={setLoggedIn} setUserId={setUserId}/>
+                <Login path="/login" loggedIn={loggedIn} setLoggedIn={setLoggedIn} setUserId={setUserId}/>
+                <Register path="/register" loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
                 {/* landing page with 3 quick options - new order, re-order fave, random pizza*/}
                 <Main path="/" setFavorite={setFavorite} setRandom={setRandom}/>
                 {/* order page for ordering a new pizza */}

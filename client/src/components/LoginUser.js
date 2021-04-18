@@ -3,13 +3,14 @@ import axios from "axios";
 import { navigate } from '@reach/router';
 
 const LoginUser = (props) => {
-    const { loggedIn, setLoggedIn } = props;
+    const { loggedIn, setLoggedIn, setUserId } = props;
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
     const login = event => {
         event.preventDefault();
+        console.log("here")
         axios.post("http://localhost:8000/api/user/login", { 
             email: email, 
             password: password,
@@ -21,7 +22,10 @@ const LoginUser = (props) => {
             withCredentials: true
         })
         .then((res) => {
+            console.log(res);
             setLoggedIn(true);
+            console.log(res.data.id);
+            setUserId(res.data.id);
             navigate("/");
         })
         .catch(err => {
