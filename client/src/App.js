@@ -31,9 +31,9 @@ function App() {
                 {/* landing page with 3 quick options - new order, re-order fave, random pizza*/}
                 <Main path="/" setFavorite={setFavorite} setRandom={setRandom}/>
                 {/* order page for ordering a new pizza */}
-                <Order path="/order" />
-                <Order path="/favorite" favorite={favorite} setFavorite={setFavorite}/>
-                <Order path="/random" random={random} setRandom={setRandom}/>
+                <Order path="/order" loggedIn={loggedIn}/>
+                <Order path="/favorite" favorite={favorite} setFavorite={setFavorite} userId={userId} loggedIn={loggedIn}/>
+                <Order path="/random" random={random} setRandom={setRandom} loggedIn={loggedIn}/>
                 {/* account page for editing account */}
                 <AccountView path="/account" loggedIn={loggedIn}/>
                 {/* <ListAll path="/karaoke" /> */}

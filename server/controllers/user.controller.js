@@ -34,17 +34,15 @@ module.exports = {
         });
     },
 
-
-
     login: (req, res) => {
-        console.log(req.body);
+        // console.log(req.body);
 
         User.findOne( { email: req.body.email } )
         .then((userRecord) => {
             if(userRecord === null) {
             res.status(400).json({ message: "Invalid login attempt 1"});
             } else {
-            console.log(userRecord);
+            // console.log(userRecord);
             bcrypt.compare(req.body.password, userRecord.password)
                 .then((passwordIsValid) => {
                 if(passwordIsValid) {
@@ -97,8 +95,24 @@ module.exports = {
         // the decoded values are held in a "payload object"
         //    we saved the _id as a part of login so we can use it for many
         //    things!
+        console.log("herrrrr: " +decodedJWT.payload._id)
         User.findById(decodedJWT.payload._id)
-        .then(user => res.json(user))
-        .catch(err => res.json(err));
+            .then(user => res.json(user))
+            .catch(err => res.json(err));
+    },
+
+    getOne: (req, res) => {
+        // console.log("id: " + req.params.id);
+
+        User.findById( req.params.id )
+        .then((document) => {
+            // console.log(oneKaraokeSong);
+            res.json(document);
+        })
+        .catch((err) => {
+            console.log("error found in getOne");
+            console.log(err);
+            res.json(err);
+        });
     },
 }
