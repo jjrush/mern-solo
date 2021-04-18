@@ -4,11 +4,9 @@ const UserSchema = new mongoose.Schema (
     {
         firstName: {
             type: String,
-            required: [ true, "First Name is required"],
         },
         lastName: {
             type: String,
-            required: [ true, "Last Name is required"],
         },
         email: {
             type: String,
@@ -21,15 +19,12 @@ const UserSchema = new mongoose.Schema (
         },
         address: {
             type: String,
-            required: [ true, "Address is required"],
         },
         city: {
             type: String,
-            required: [ true, "City is required"],
         },
         state: {
             type: String,
-            required: [ true, "State is required"],
         },
 
         orders: [

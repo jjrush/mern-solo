@@ -21,44 +21,43 @@ const LoginUser = (props) => {
             withCredentials: true
         })
         .then((res) => {
-            console.log(res.data);
             setLoggedIn(true);
             navigate("/");
         })
         .catch(err => {
-            console.log(err);
-            setErrorMessage(err.response.data.msg);
+            console.log("Error: " + err);
+            // setErrorMessage(err.response.data.msg);
         });
     };
 
     return (
         <div>
-        <h2>Login</h2>
-        <p className="error-text">{errorMessage ? errorMessage : ""}</p>
-        <form onSubmit={login}>
-            <div>
-            <label>Email</label>
-            <input
-                type="text"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            </div>
-            <div>
-            <label>Password</label>
-            <input 
-                type="password"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            </div>
-            <div className="center">
-            <button className="sign-in-btn" type="submit">Sign In</button>
-            <button className="register-btn" onClick={() => navigate("/logreg")}>Create Account</button>
-            </div>
-        </form>
+            <h2>Login</h2>
+            <p className="error-text">{errorMessage ? errorMessage : ""}</p>
+            <form onSubmit={login}>
+                <div>
+                <label>Email</label>
+                <input
+                    type="text"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                </div>
+                <div>
+                <label>Password</label>
+                <input 
+                    type="password"
+                    name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                </div>
+                <div className="center">
+                <button className="sign-in-btn" type="submit">Sign In</button>
+                <button className="register-btn" onClick={() => navigate("/register")}>Create Account</button>
+                </div>
+            </form>
         </div>
     );
 };

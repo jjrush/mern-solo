@@ -5,7 +5,6 @@ const Register = props => {
     const [confirmReg, setConfirmReg] = useState("");
     const [errs, setErrs] = useState({});
 
-    // CHECK THIS OUT!!!!
     //    using a single state object to hold all data!
     const [ user, setUser ] = useState({
         firstName: "",
@@ -19,8 +18,8 @@ const Register = props => {
     //    we can use the input's name attribute as the key in to the object
     const handleChange = (e) => {
         setUser({
-        ...user,
-        [e.target.name]: e.target.value,
+            ...user,
+            [e.target.name]: e.target.value,
         })
     }
 
@@ -41,11 +40,11 @@ const Register = props => {
             // when we successfully created the account, reset state for registration form
             //    We do this if we are NOT navigating automatically away from the page
             setUser({
-            firstName: "",
-            lastName: "", 
-            email: "", 
-            password: "", 
-            confirmPassword: "",
+                firstName: "",
+                lastName: "", 
+                email: "", 
+                password: "", 
+                confirmPassword: "",
             })
 
             setConfirmReg("Thank you for Registering, you can now log in!");

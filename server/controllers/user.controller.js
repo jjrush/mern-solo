@@ -38,7 +38,7 @@ module.exports = {
                         firstName: userRecord.firstName,
                         // whatever I want in here
                         },
-                        process.env.JWT_SECRET),
+                        /*process.env.JWT_SECRET*/"secret"),
                     {
                         httpOnly: true,
                         expires: new Date(Date.now() + 900000000),
