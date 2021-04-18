@@ -5,7 +5,7 @@ import '../css/Header.css';
 
 const Header = (props) => {
     const { loggedIn, setLoggedIn } = props;
-    console.log("LoggedIn: " + loggedIn);
+    // console.log("LoggedIn: " + loggedIn);
     const logout = (e) => {
         e.preventDefault();
         axios.post("http://localhost:8000/api/user/logout", { 

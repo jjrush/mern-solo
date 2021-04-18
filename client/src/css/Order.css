@@ -1,0 +1,64 @@
+label {
+    display: inline;
+}
+
+.cancel-btn {
+    margin-top: 10px;
+}
+.submit-btn {
+    margin-top: 10px;
+    margin-left: 450px;
+}
+
+.checkbox {
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.checkbox-label {
+    margin-right: 40px;
+}
+
+.toppings-label {
+    display: inline-block;
+}
+
+.toppings {
+    
+    margin-left: 8px;
+    /* border: 1px black solid; */
+    display: inline;
+    width: 80px;
+    height: 200px;
+}
+
+.toppings-row-top {
+    /* border: 1px solid black; */
+    display: inline-block;
+    margin-top: 1px;
+}
+
+.toppings-row {
+    display: inline-block;
+    margin-top: 1px;
+    margin-left: 236px;
+}
+
+input, select {
+    /* width: 0%; */
+    padding: 12px 20px;
+    /* margin: 8px 0px; */
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.width-50 {
+    width: 50%;
+}
+
+form {
+    text-align: left;
+}
+
