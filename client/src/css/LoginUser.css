@@ -1,0 +1,28 @@
+.login-form {
+    text-align: center;
+}
+
+.login-label {
+    text-align: center;
+}
+.email-input {
+    
+    margin-left: 15px;
+    margin-right: 70px;
+
+}
+.email-label {
+    margin-left: 20px;
+
+}
+
+.password-input {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 70px;
+
+}
+
+.sign-in-btn {
+    margin-top: 10px;
+}

@@ -5,7 +5,8 @@ label {
 .cancel-btn {
     margin-top: 10px;
 }
-.submit-btn {
+.checkout-btn {
+    background-color: green;
     margin-top: 10px;
     margin-left: 450px;
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { navigate } from '@reach/router';
+import '../css/LoginUser.css'
 
 const LoginUser = (props) => {
     const { loggedIn, setLoggedIn, setUserId } = props;
@@ -35,13 +36,14 @@ const LoginUser = (props) => {
     };
 
     return (
-        <div>
+        <div className="login-div">
             <h2>Login</h2>
             <p className="error-text">{errorMessage ? errorMessage : ""}</p>
-            <form onSubmit={login}>
+            <form className="login-form" onSubmit={login}>
                 <div>
-                <label>Email</label>
+                <label className="email-label">Email:</label>
                 <input
+                    className="email-input"
                     type="text"
                     name="email"
                     value={email}
@@ -49,8 +51,9 @@ const LoginUser = (props) => {
                 />
                 </div>
                 <div>
-                <label>Password</label>
+                <label className="login-label">Password:</label>
                 <input 
+                    className="password-input"
                     type="password"
                     name="password"
                     value={password}
