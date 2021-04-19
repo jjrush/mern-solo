@@ -36,7 +36,7 @@ const Header = (props) => {
         <div id="header">
             <button className="header-btn" onClick={ () => navigate("/")}>Home</button>
             <button className="header-btn" onClick={ () => navigate("/order")}>Order</button>
-            <button className="title-btn" onClick={ () => navigate("/")}><h1>Pizza Pete's</h1></button>
+            <button className="title-btn" onClick={ () => navigate("/")}><h1>Rush's Ristorante</h1></button>
             <button className="header-btn" onClick={() => navigate("/account")}>Account</button>
             <button className="header-btn" onClick={(e) => handleButton(e)}>{loggedIn ? "Logout" : "Login"}</button>
         </div>

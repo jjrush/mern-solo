@@ -27,30 +27,32 @@ const UserSchema = new mongoose.Schema (
             type: String,
         },
 
-        orders: [
-            {
-                date: {
-                    type: Date
-                },
-                favorite: {
-                    type: Boolean
-                },
+        orders: {
+
+        },
+        //     {
+        //         date: {
+        //             type: Date
+        //         },
+        //         favorite: {
+        //             type: Boolean
+        //         },
                 
-                size: {
-                    type: String
-                },
-                method: {
-                    type: String
-                },
-                crust: {
-                    type: String
-                },
-                price: {
-                    type: Number,
-                },
-                toppings: {},
-            }
-        ],
+        //         size: {
+        //             type: String
+        //         },
+        //         method: {
+        //             type: String
+        //         },
+        //         crust: {
+        //             type: String
+        //         },
+        //         price: {
+        //             type: Number,
+        //         },
+        //         toppings: {},
+        //     }
+        // ],
 
         favorite: {            
             size: {
@@ -66,7 +68,7 @@ const UserSchema = new mongoose.Schema (
                 type: Number,
             },
             toppings: {},
-        }
+        },
     },
     { timestamps: true }
 );
