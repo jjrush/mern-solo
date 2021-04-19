@@ -13,7 +13,6 @@ const QuickAction = (props) => {
         } else if ( text === "Re-order Favorite" ) 
         {
             // fetch their favorite then display it on the ordering page
-            setFavorite(true);
             navigate("/favorite")
         } else if ( text === "Random Pizza" ) 
         {

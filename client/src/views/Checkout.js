@@ -8,13 +8,22 @@ const Checkout = (props) => {
     const [ toppingsStr, setToppingsStr ] = useState("");
     const [ price, setPrice ] = useState(0);
     const [ success, setSuccess ] = useState(false);
+    const [ orders, setOrders ] = useState([]);
 
-    let orders = [];
+    const getRandId = () => {
+        let s = "";
+        for (let index = 0; index < 15; index++) {
+            s = s + getRand(9);
+        }
+        return s;
+    }
 
+    const getRand = (c) => {
+        return Math.floor((Math.random() * c));
+    }
     const handleSubmit = (e) => {
-        console.log(order)
+        order.orderId = getRandId();
         orders.push(order);
-        console.log(orders)
         axios.put("http://localhost:8000/api/user/" + userId, {orders})
             .then((res) => {
                 if(res.data.errors) {
@@ -23,7 +32,7 @@ const Checkout = (props) => {
                 }
                 else {
                     console.log(res.data)
-                    console.log("hereee")
+                    // console.log("hereee")
                     setSuccess(true);
                     // setOrder({});
                     // navigate("/");
@@ -85,6 +94,27 @@ const Checkout = (props) => {
         calculatePrice();
     }, []);
 
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/user/" + userId)
+            .then((res) => {
+                console.log('here')
+                if(res.data.errors) {
+                    console.log(res.data.errors);
+                }
+                else {
+                    // setOrder(res.data)
+                    // setToppings(res.data.favorite)
+                    console.log("ehreheui")
+                    console.log(res.data.orders)
+                    setOrders(res.data.orders);
+                    // console.log("orders");
+                    
+                }
+            })
+            .catch((err) => {
+                console.log("Error:" + err);
+            })
+    }, []);
     return (
         <div>
             <h2>Your Order</h2>

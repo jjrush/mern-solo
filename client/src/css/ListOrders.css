@@ -14,3 +14,9 @@
     padding: 0px;
 }
 
+.garbo {
+    display: inline-block;
+    padding: 5px;
+    /* margin-bottom: -30000px; */
+}
+

@@ -51,6 +51,34 @@ module.exports = {
         
     },
 
+
+    favorite: (req, res) => {
+        console.log("favorite called:)")
+        const id = req.params.id;
+        const favorite = req.body;
+
+        User.findByIdAndUpdate(id, {}, {
+            new: true,
+            runValidators: true, 
+        })
+        .then(
+            User.findByIdAndUpdate(id, favorite, {
+                new: true,
+                runValidators: true, 
+            })
+            .then((item) => {
+                console.log('good2gofav')
+                // console.log(res.json(item.body))
+                res.json(item);
+            })
+            .catch((err) => {
+                console.log("error found in favorite");
+                console.log(err);
+                res.json(err);
+            })
+        );
+    },
+
     // create: (req, res) => {
     //     // console.log(req.body);
 
