@@ -121,7 +121,6 @@ console.log(orders);
                 orders ? 
                     orders.map((element, index) => (
                         <div className="order" key={index}>
-                            {/* date */}
                             <div className="" >
                                 <p className="garbo">{element.date}</p>
                                 <div className="garbo">
@@ -135,8 +134,6 @@ console.log(orders);
                                 <p>{convertSize(element.size)} {element.crust} - {convertToppingsToStr(element.toppings)} - ${element.price}</p>
                             </div>
                             <hr></hr>
-                            {/* size - toppings - price */}
-                            {/* favorite??? */}
                         </div>
                     ))
                 :
