@@ -1,0 +1,18 @@
+Must Haves:
+Front End working
+Back End working
+Registration
+Account
+    Authentication
+    Login
+    Logout
+Ordering
+Checkout
+
+Nice to Haves:
+Random pizza
+Past orders
+Favorite pizza
+
+Repo:
+https://github.com/jjrush/mern-solo
