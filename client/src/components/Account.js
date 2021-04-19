@@ -11,7 +11,7 @@ const Account = (props) => {
     const [ address, setAddress ] = useState("");
     const [ city, setCity ] = useState("");
     const [ state, setState ] = useState("");
-    const [ errs, setErrs ] = useState({});
+    // const [ errs, setErrs ] = useState({});
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -28,7 +28,7 @@ const Account = (props) => {
         .then((res) => {
             if(res.data.errors) {
                 console.log(res.data.errors);
-                setErrs(res.data.errors);
+                // setErrs(res.data.errors);
             }
             else {
                 // console.log(res.data)

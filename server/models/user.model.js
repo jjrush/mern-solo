@@ -48,8 +48,7 @@ const UserSchema = new mongoose.Schema (
                 price: {
                     type: Number,
                 },
-                toppings: {
-                },
+                toppings: {},
             }
         ],
 
@@ -66,8 +65,7 @@ const UserSchema = new mongoose.Schema (
             price: {
                 type: Number,
             },
-            toppings: {
-            },
+            toppings: {},
         }
     },
     { timestamps: true }

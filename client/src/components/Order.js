@@ -1,75 +1,100 @@
-import React, { useState, useEffect, component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { navigate } from '@reach/router';
 import axios from 'axios';
 import '../css/Order.css'
 
 const Order = (props) => {
-    const { order, setOrder } = props;
+    const { favorite, random, order, setOrder, userId, loggedIn } = props;
     const [, updateState] = useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
 
-    const { favorite, random, setFavorite, setRandom, userId, loggedIn } = props;
+    let user = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        address: "",
+        city: "",
+        state: "",
+        orders: [],
+        favorite: {}
+    }
 
     const [ toppings, setToppings ] = useState({
         pepperoni: {
             value: false,
-            price: 1
+            price: 1,
+            name: "pepperoni",
         },
         tomato:  {
             value: false,
-            price: .5
+            price: .5,
+            name: "tomato",
         },
         avocado:  {
             value: false,
-            price: 2
+            price: 2,
+            name: "avocado",
         }, 
         mushroom:  {
             value: false,
-            price: .5
+            price: .5,
+            name: "mushroom",
         },
         peppers:  {
             value: false,
-            price: .5
+            price: .5,
+            name: "peppers",
         },
         bacon:  {
             value: false,
-            price: 1
+            price: 1,
+            name: "bacon",
         },
         jalapeno:  {
             value: false,
-            price: .5
+            price: .5,
+            name: "jalapeno",
         },
         pineapple:  {
             value: false,
-            price: .5
+            price: .5,
+            name: "pineapple",
         },
         canadian_bacon:  {
             value: false,
-            price: 1
+            price: 1,
+            name: "Canadian Bacon",
         },
         sausage:  {
             value: false,
-            price: 1
+            price: 1,
+            name: "sausage",
         }, 
         onion:  {
             value: false,
-            price: .5
+            price: .5,
+            name: "onion",
         },
         olives:  {
             value: false,
-            price: .5
+            price: .5,
+            name: "olives",
         },
         spinach:  {
             value: false,
-            price: .5
+            price: .5,
+            name: "spinach",
         },
         mozzarella:  {
             value: false,
-            price: .5
+            price: .5,
+            name: "mozzarella",
         },
         cheddar:  {
             value: false,
-            price: .5
+            price: .5,
+            name: "cheddar",
         },
     })
 
@@ -95,19 +120,27 @@ const Order = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:8000/api/order", {order})
-        .then((res) => {
-            if(res.data.errors) {
-                console.log(res.data.errors);
-            }
-            else {
-                console.log(res.data)
-                navigate("/checkout");
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+        handleSetOrder(toppings);
+        console.log("order")
+        console.log(order);
+        console.log(user);
+        navigate("checkout")
+        // axios.post("http://localhost:8000/api/user/" + userId, {user})
+        //     .then((res) => {
+        //         if(res.data.errors) {
+        //             console.log('error')
+        //             console.log(res.data.errors);
+        //         }
+        //         else {
+        //             console.log(res.data)
+        //             console.log("hereee")
+        //             navigate("/checkout");
+        //         }
+        //     })
+        //     .catch((err) => {
+        //         console.log('erro2r')
+        //         console.log(err);
+        //     })
     }
 
     const getRand = (c) => {
@@ -184,25 +217,27 @@ const Order = (props) => {
         order.date = getDate();
         setOrder(order);
 
-        if( favorite )
-        {
-            axios.get("http://localhost:8000/api/user/" + userId)
-            .then((res) => {
-                console.log('here')
-                if(res.data.errors) {
-                    console.log(res.data.errors);
-                }
-                else {
-                    console.log("favorite");
-                    console.log(res.data.favorite);
-                    // setToppings(res.data.favorite)
-                    // console.log(res)
-                }
-            })
-            .catch((err) => {
-                console.log("Error:" + err);
-            })
-        }
+        axios.get("http://localhost:8000/api/user/" + userId)
+        .then((res) => {
+            console.log('here')
+            if(res.data.errors) {
+                console.log(res.data.errors);
+            }
+            else {
+                user.firstName=res.data.firstName;
+                user.lastName=res.data.lastName;
+                user.email=res.data.email;
+                user.password=res.data.password;
+                console.log(res);
+                console.log(user)
+                // setToppings(res.data.favorite)
+                // console.log(res)
+            }
+        })
+        .catch((err) => {
+            console.log("Error:" + err);
+        })
+
         if ( random )
         {
             randSetSize(getRand(4));
