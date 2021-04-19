@@ -20,7 +20,7 @@ module.exports = {
     },
 
     update: (req, res) => {
-        console.log("update called:)")
+        // console.log("update called:)")
         // console.log(req.params.id);
         // console.log(req.body);
         const id = req.params.id;
@@ -39,7 +39,7 @@ module.exports = {
             runValidators: true, 
         })
         .then((item) => {
-            console.log('good2go')
+            // console.log('good2go')
             // console.log(res.json(item.body))
             res.json(item);
         })
@@ -53,7 +53,7 @@ module.exports = {
 
 
     favorite: (req, res) => {
-        console.log("favorite called:)")
+        // console.log("favorite called:)")
         const id = req.params.id;
         const favorite = req.body;
 
@@ -67,7 +67,7 @@ module.exports = {
                 runValidators: true, 
             })
             .then((item) => {
-                console.log('good2gofav')
+                // console.log('good2gofav')
                 // console.log(res.json(item.body))
                 res.json(item);
             })
