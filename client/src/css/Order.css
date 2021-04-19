@@ -3,6 +3,7 @@ label {
 }
 
 .cancel-btn {
+    background-color: red;
     margin-top: 10px;
 }
 .checkout-btn {
