@@ -47,7 +47,7 @@ const Account = (props) => {
         {
             axios.get("http://localhost:8000/api/user/" + userId)
             .then((res) => {
-                console.log('here')
+                // console.log('here')
                 if(res.data.errors) {
                     console.log(res.data.errors);
                 }

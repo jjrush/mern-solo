@@ -42,7 +42,6 @@ const ListOrders = (props) => {
 
     const handleFavorite = (index, favorite) => {
         // console.log(favorite);
-        console.log(orders[index])
         favorite.orderId = orders[index].orderId;
         axios.put("http://localhost:8000/api/user/favorite/" + userId, {favorite})
             .then((res) => {
@@ -68,7 +67,6 @@ const ListOrders = (props) => {
                     .catch((err) => {
                         console.log("Error:" + err);
                     })
-                    console.log(orders[index])
                     // console.log(res.data)
                     // console.log("hereee")
                     // setOrder({});
@@ -109,9 +107,9 @@ const ListOrders = (props) => {
             <h2>Past Orders</h2>
             {
                 orders.map((element, index) => (
-                    <div className="order">
+                    <div className="order" key={index}>
                         {/* date */}
-                        <div className="" key={index}>
+                        <div className="" >
                             <p className="garbo">{element.date}</p>
                             <div className="garbo">
                                 <label>Favorite:</label>
@@ -121,7 +119,7 @@ const ListOrders = (props) => {
                             </div>
                         </div>
                         <div>
-                            <p>{convertSize(element.size)} - {convertToppingsToStr(element.toppings)} - ${element.price}</p>
+                            <p>{convertSize(element.size)} {element.crust} - {convertToppingsToStr(element.toppings)} - ${element.price}</p>
                         </div>
                         <hr></hr>
                         {/* size - toppings - price */}

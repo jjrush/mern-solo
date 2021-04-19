@@ -58,7 +58,7 @@ function App() {
                 {/* order page for ordering a new pizza */}
                 <Order path="/order" loggedIn={loggedIn} order={order} setOrder={setOrder} userId={userId}/>
                 <Order path="/favorite" favorite={true} userId={userId} loggedIn={loggedIn} order={order} setOrder={setOrder}/>
-                <Order path="/random" random={random} setRandom={setRandom} loggedIn={loggedIn} order={order} setOrder={setOrder} userId={userId}/>
+                <Order path="/random" random={true} setRandom={setRandom} loggedIn={loggedIn} order={order} setOrder={setOrder} userId={userId}/>
                 <Checkout path="/checkout" order={order} userId={userId} setOrder={setOrder}/>
                 {/* account page for editing account */}
                 <AccountView path="/account" loggedIn={loggedIn} userId={userId}/>    
