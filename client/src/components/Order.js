@@ -5,10 +5,12 @@ import '../css/Order.css'
 
 const Order = (props) => {
     const { favorite, random, order, setOrder, userId, loggedIn } = props;
+    const [ favoriteOrder, setFavoriteOrder] = useState({});
     const [, updateState] = useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
 
     let user = {
+        // id: getRandId(),
         firstName: "",
         lastName: "",
         email: "",
@@ -121,9 +123,9 @@ const Order = (props) => {
     const submitHandler = (e) => {
         e.preventDefault();
         handleSetOrder(toppings);
-        console.log("order")
-        console.log(order);
-        console.log(user);
+        // console.log("order")
+        // console.log(order);
+        // console.log(user);
         navigate("checkout")
     }
 
@@ -172,26 +174,11 @@ const Order = (props) => {
     const randSetToppings = (n) => {
         for ( const key in toppings )
         {
-            if ( getRandForToppings(10) )
+            if ( getRandForToppings(5) )
                 toppings[key].value = true
             else
                 toppings[key].value = false
         }
-        // toppings.pepperoni.value = getRandForToppings(10);
-        // toppings.bacon.value = getRandForToppings(10);
-        // toppings.mushroom.value = getRandForToppings(10);
-        // toppings.avocado.value = getRandForToppings(10);
-        // toppings.tomato.value = getRandForToppings(10);
-        // toppings.peppers.value = getRandForToppings(10);
-        // toppings.jalapeno.value = getRandForToppings(10);
-        // toppings.onion.value = getRandForToppings(10);
-        // toppings.canadian_bacon.value = getRandForToppings(10);
-        // toppings.cheddar.value = getRandForToppings(10);
-        // toppings.olives.value = getRandForToppings(10);
-        // toppings.pineapple.value = getRandForToppings(10);
-        // toppings.mozzarella.value = getRandForToppings(10);
-        // toppings.spinach.value = getRandForToppings(10);
-        // toppings.sausage.value = getRandForToppings(10);
     }
 
     const getDate = () => {
@@ -209,25 +196,36 @@ const Order = (props) => {
         setOrder(order);
 
         axios.get("http://localhost:8000/api/user/" + userId)
-        .then((res) => {
-            console.log('here')
-            if(res.data.errors) {
-                console.log(res.data.errors);
-            }
-            else {
-                // user.firstName=res.data.firstName;
-                // user.lastName=res.data.lastName;
-                // user.email=res.data.email;
-                // user.password=res.data.password;
-                console.log(res);
-                // console.log(user)
-                // setToppings(res.data.favorite)
-                // console.log(res)
-            }
-        })
-        .catch((err) => {
-            console.log("Error:" + err);
-        })
+            .then((res) => {
+                // console.log('here')
+                if(res.data.errors) {
+                    console.log(res.data.errors);
+                }
+                else {
+                    // user.firstName=res.data.firstName;
+                    // user.lastName=res.data.lastName;
+                    // user.email=res.data.email;
+                    // user.password=res.data.password;
+                    console.log("axios get");
+                    // console.log(user)
+                    // setToppings(res.data.favorite)
+                    // console.log(res)
+                }
+                if( favorite )
+                {
+                    console.log('favorite');
+                    order.size = res.data.favorite.size;
+                    order.crust = res.data.favorite.crust;
+                    order.method = res.data.favorite.method;
+                    order.price = res.data.favorite.price;
+                    order.quantity = res.data.favorite.quantity;
+                    setToppings(res.data.favorite.toppings)
+                    forceUpdate();
+                }  
+            })
+            .catch((err) => {
+                console.log("Error:" + err);
+            })
 
         if ( random )
         {
@@ -237,8 +235,11 @@ const Order = (props) => {
             forceUpdate();
             console.log(order);
         }
+        
     }, []);
-
+    console.log("woeifwoehgwoi")
+    console.log(order)
+console.log(toppings)
     return (
         <div>
             <h2>Craft-A-Pizza</h2>

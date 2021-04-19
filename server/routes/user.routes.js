@@ -10,5 +10,6 @@ module.exports = (app) => {
     // app.get("/api/user/loggedin", authenticate, userController.getLoggedInUser);
     app.get("/api/user/:id", userController.getOne);
     app.put("/api/user/:id", userController.update);
+    app.put("/api/user/favorite/:id", userController.favorite);
     // app.post("/api/user/:id", userController.create);
 };
