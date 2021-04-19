@@ -10,6 +10,7 @@ import Register from './views/Register';
 import Main from './views/Main';
 import Checkout from './views/Checkout';
 
+
 function App() {
     const NotFound = () => {
         return (
@@ -47,7 +48,7 @@ function App() {
                 <Order path="/random" random={random} setRandom={setRandom} loggedIn={loggedIn} order={order} setOrder={setOrder} userId={userId}/>
                 <Checkout path="/checkout" order={order} userId={userId} setOrder={setOrder}/>
                 {/* account page for editing account */}
-                <AccountView path="/account" loggedIn={loggedIn} userId={userId}/>       
+                <AccountView path="/account" loggedIn={loggedIn} userId={userId}/>    
                 <NotFound default />
             </Router>
         </div>

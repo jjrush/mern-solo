@@ -67,70 +67,66 @@ const Account = (props) => {
     }, [  ]);
 
     return (
-        <div>
+        <div className="account">
         {
             loggedIn ? 
-                <div>
-                    <div className="account-info">
-                        <h2>Account Info</h2>
-                        <form onSubmit={submitHandler}>
-                            <div>
-                                <label>First Name: </label>
-                                <input className="fname-field" type="text"
-                                    name="firstName"
-                                    value={firstName}
-                                    onChange={ (e) => setFirstName( e.target.value ) }
-                                />
-                            </div>
-                            <div>
-                                <label>Last Name: </label>
-                                <input className="lname-field" type="text"
-                                    name="lastName"
-                                    value={lastName}
-                                    onChange={ (e) => setLastName( e.target.value ) }
-                                />
-                            </div>
-                            <div>
-                                <label>Email: </label>
-                                <input className="email-field" type="text"
-                                    name="email"
-                                    value={email}
-                                    onChange={ (e) => setEmail( e.target.value ) }
-                                />
-                            </div>
-                            <div>
-                                <label>Address: </label>
-                                <input className="address-field" type="text"
-                                    name="address"
-                                    value={address}
-                                    onChange={ (e) => setAddress( e.target.value ) }
-                                />
-                            </div>
-                            <div>
-                                <label>City: </label>
-                                <input className="city-field" type="text"
-                                    name="city"
-                                    value={city}
-                                    onChange={ (e) => setCity( e.target.value ) }
-                                />
-                            </div>
-                            <div>
-                                <label>State: </label>
-                                <input className="state-field" type="text"
-                                    name="state"
-                                    value={state}
-                                    onChange={ (e) => setState( e.target.value ) }
-                                />
-                            </div>
-                            <div>
-                                <button className="update-btn" type="submit">Update Info</button>
-                                
-                            </div>
-                        </form>
-                    </div>
-                    <div className="order-details">
-
-                    </div>
+                <div className="account-info">
+                    
+                    <form onSubmit={submitHandler}>
+                        <h2 className="account-h2">Account Info</h2>
+                        <div>
+                            <label>First Name: </label>
+                            <input className="fname-field" type="text"
+                                name="firstName"
+                                value={firstName}
+                                onChange={ (e) => setFirstName( e.target.value ) }
+                            />
+                        </div>
+                        <div>
+                            <label>Last Name: </label>
+                            <input className="lname-field" type="text"
+                                name="lastName"
+                                value={lastName}
+                                onChange={ (e) => setLastName( e.target.value ) }
+                            />
+                        </div>
+                        <div>
+                            <label>Email: </label>
+                            <input className="email-field" type="text"
+                                name="email"
+                                value={email}
+                                onChange={ (e) => setEmail( e.target.value ) }
+                            />
+                        </div>
+                        <div>
+                            <label>Address: </label>
+                            <input className="address-field" type="text"
+                                name="address"
+                                value={address}
+                                onChange={ (e) => setAddress( e.target.value ) }
+                            />
+                        </div>
+                        <div>
+                            <label>City: </label>
+                            <input className="city-field" type="text"
+                                name="city"
+                                value={city}
+                                onChange={ (e) => setCity( e.target.value ) }
+                            />
+                        </div>
+                        <div>
+                            <label>State: </label>
+                            <input className="state-field" type="text"
+                                name="state"
+                                value={state}
+                                onChange={ (e) => setState( e.target.value ) }
+                            />
+                        </div>
+                        <div>
+                            <button className="update-btn" type="submit">Update Info</button>
+                            
+                        </div>
+                    </form>
                 </div>
             :
             null
