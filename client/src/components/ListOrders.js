@@ -93,7 +93,18 @@ const ListOrders = (props) => {
                     // setToppings(res.data.favorite)
                     // console.log(res.data)
                     setFavorite(res.data.favorite);
-                    setOrders(res.data.orders);
+                    let axiosOrders = {};
+                    if ( res.data.orders != undefined && res.data.orders != null )
+                    {
+                        // axiosOrders = ;
+                        if ( Object.keys(res.data.orders).length == 1 )
+                        {
+                            orders.push(res.data.orders)
+                        }
+                        setOrders(res.data.orders);
+
+                    }
+
                 }
             })
             .catch((err) => {
@@ -101,31 +112,35 @@ const ListOrders = (props) => {
             })
         convertToppingsToStr();
     }, []);
-
+    console.log("efowijefoij")
+console.log(orders);
     return (
         <div className="list-orders">
             <h2>Past Orders</h2>
             {
-                orders.map((element, index) => (
-                    <div className="order" key={index}>
-                        {/* date */}
-                        <div className="" >
-                            <p className="garbo">{element.date}</p>
-                            <div className="garbo">
-                                <label>Favorite:</label>
-                                <input name="favorite" type="radio" checked={element.orderId == favorite.orderId} 
-                                        value={element.orderId} onChange={() => handleFavorite(index,element)}>
-                                </input>
+                orders ? 
+                    orders.map((element, index) => (
+                        <div className="order" key={index}>
+                            {/* date */}
+                            <div className="" >
+                                <p className="garbo">{element.date}</p>
+                                <div className="garbo">
+                                    <label>Favorite:</label>
+                                    <input name="favorite" type="radio" checked={ favorite ? element.orderId == favorite.orderId : null} 
+                                            value={element.orderId} onChange={() => handleFavorite(index,element)}>
+                                    </input>
+                                </div>
                             </div>
+                            <div>
+                                <p>{convertSize(element.size)} {element.crust} - {convertToppingsToStr(element.toppings)} - ${element.price}</p>
+                            </div>
+                            <hr></hr>
+                            {/* size - toppings - price */}
+                            {/* favorite??? */}
                         </div>
-                        <div>
-                            <p>{convertSize(element.size)} {element.crust} - {convertToppingsToStr(element.toppings)} - ${element.price}</p>
-                        </div>
-                        <hr></hr>
-                        {/* size - toppings - price */}
-                        {/* favorite??? */}
-                    </div>
-                ))
+                    ))
+                :
+                null
             }
         </div>
     )

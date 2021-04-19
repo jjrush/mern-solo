@@ -9,7 +9,7 @@ const Checkout = (props) => {
     const [ price, setPrice ] = useState(0);
     const [ success, setSuccess ] = useState(false);
     const [ orders, setOrders ] = useState([]);
-
+    let ordersArr = [];
     const getRandId = () => {
         let s = "";
         for (let index = 0; index < 15; index++) {
@@ -23,6 +23,11 @@ const Checkout = (props) => {
     }
     const handleSubmit = (e) => {
         order.orderId = getRandId();
+        console.log('submitting')
+        console.log(orders);
+        
+        // ordersArr.push(order);
+        // setOrders({...orders,order})
         orders.push(order);
         axios.put("http://localhost:8000/api/user/" + userId, {orders})
             .then((res) => {
@@ -97,7 +102,7 @@ const Checkout = (props) => {
     useEffect(() => {
         axios.get("http://localhost:8000/api/user/" + userId)
             .then((res) => {
-                console.log('here')
+                // console.log('here')
                 if(res.data.errors) {
                     console.log(res.data.errors);
                 }
@@ -106,8 +111,9 @@ const Checkout = (props) => {
                     // setToppings(res.data.favorite)
                     console.log("ehreheui")
                     console.log(res.data.orders)
-                    setOrders(res.data.orders);
-                    // console.log("orders");
+                    if( res.data.orders != undefined && res.data.orders != null )
+                        setOrders(res.data.orders);
+                    console.log(orders);
                     
                 }
             })
