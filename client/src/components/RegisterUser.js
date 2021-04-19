@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import '../css/Account.css'
 
 const Register = props => {
     const [confirmReg, setConfirmReg] = useState("");
@@ -66,13 +67,14 @@ const Register = props => {
         }
         <form onSubmit={register}>
             <div>
-            <label>First Name</label>
+            <label className="register-label">First Name:</label>
             {
                 errs.firstName ? 
                 <span className="error-text">{ errs.firstName.message }</span>
                 : null
             }
             <input
+                className="fname-field"
                 type="text"
                 name="firstName"
                 value={user.firstName}
@@ -80,7 +82,7 @@ const Register = props => {
             />
             </div>
             <div>
-            <label>Last Name</label>
+            <label className="register-label">Last Name:</label>
             {
                 errs.lastName ? 
                 <span className="error-text">{ errs.lastName.message }</span>
@@ -91,6 +93,7 @@ const Register = props => {
                 {/* onChange={ handleChange } */}
                 {/* onChange={(e) => handleChange(e)} */}
             <input
+                className="lname-field"
                 type="text"
                 name="lastName"
                 value={user.lastName}
@@ -98,13 +101,14 @@ const Register = props => {
             />
             </div>
             <div>
-            <label>Email</label>
+            <label className="register-label">Email:</label>
             {
                 errs.email? 
                 <span className="error-text">{ errs.email.message }</span>
                 : null
             }
             <input
+                className="email-field"
                 type="email"
                 name="email"
                 value={user.email}
@@ -112,13 +116,14 @@ const Register = props => {
             />
             </div>
             <div>
-            <label>Password</label>
+            <label className="register-label">Password:</label>
             {
                 errs.password ? 
                 <span className="error-text">{ errs.password.message }</span>
                 : null
             }
             <input
+                className="password-field"
                 type="password"
                 name="password"
                 value={user.password}
@@ -126,13 +131,14 @@ const Register = props => {
             />
             </div>
             <div>
-            <label>Confirm Password</label>
+            <label className="register-label">Confirm:</label>
             {
                 errs.confirmPassword? 
                 <span className="error-text">{ errs.confirmPassword.message }</span>
                 : null
             }
             <input
+                className="password-confirm-field"
                 type="password"
                 name="confirmPassword"
                 value={user.confirmPassword}
@@ -140,9 +146,7 @@ const Register = props => {
             />
             </div>
             <div className="center">
-            <button 
-                type="submit"
-            >Register Me</button>
+            <button className="register-btn" type="submit">Register</button>
             </div>
         </form>
         </div>

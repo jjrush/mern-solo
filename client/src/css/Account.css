@@ -13,7 +13,7 @@
 
 .email-field {
     margin-top: 10px;
-    margin-left: 45px;
+    margin-left: 46px;
 }
 
 .address-field {
@@ -39,4 +39,21 @@
     margin-left: 100px;
 }
 
+.password-field {
+    margin-top: 10px;
+    margin-left: 16px;
+}
+
+.password-confirm-field{ 
+    margin-top: 10px;
+    margin-left: 25px;
+}
+
+.register-label {
+    margin-left: 310px;
+}
+
+.register-btn {
+    margin-top: 10px;
+}
 

@@ -11,7 +11,6 @@ const LoginUser = (props) => {
 
     const login = event => {
         event.preventDefault();
-        console.log("here")
         axios.post("http://localhost:8000/api/user/login", { 
             email: email, 
             password: password,
