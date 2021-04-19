@@ -4,19 +4,43 @@ import axios from 'axios';
 import '../css/Checkout.css';
 
 const Checkout = (props) => {
-    const { order } = props;
+    const { order, userId, setOrder } = props;
     const [ toppingsStr, setToppingsStr ] = useState("");
     const [ price, setPrice ] = useState(0);
+    const [ success, setSuccess ] = useState(false);
+
+    let orders = [];
 
     const handleSubmit = (e) => {
-
+        console.log(order)
+        orders.push(order);
+        console.log(orders)
+        axios.put("http://localhost:8000/api/user/" + userId, {orders})
+            .then((res) => {
+                if(res.data.errors) {
+                    console.log('error')
+                    console.log(res.data.errors);
+                }
+                else {
+                    console.log(res.data)
+                    console.log("hereee")
+                    setSuccess(true);
+                    // setOrder({});
+                    // navigate("/");
+                }
+            })
+            .catch((err) => {
+                console.log('erro2r')
+                console.log(err);
+            })
+        
     }
 
     const calculatePrice = (e) => {
         let p = 0;
         for ( const key in order.toppings )
         {
-            if ( order.toppings[key].value == true )
+            if ( order.toppings[key].value === true )
             {
                 p = p + order.toppings[key].price;
             }
@@ -39,12 +63,11 @@ const Checkout = (props) => {
             p = p + 10
         p = p * order.quantity;
         setPrice(p);
+        order.price=p;
     }
 
     useEffect(() => {
         let s = "";
-        console.log(order.toppings)
-        console.log()
         let size = Object.keys(order.toppings).length;
         if ( size === 0 )
             s = "None"
@@ -52,7 +75,7 @@ const Checkout = (props) => {
         {
             for ( const key in order.toppings )
             {
-                order.toppings[key].value == true ? 
+                order.toppings[key].value === true ? 
                 s = s + ` ${order.toppings[key].name}`
                 :
                 s = s
@@ -79,6 +102,11 @@ const Checkout = (props) => {
             }
             <button className="start-over-btn" onClick={()=>navigate("/order")}>Start Over</button>
             <button className="submit-order-btn" onClick={handleSubmit}>Submit Order</button>
+            {
+                success ? 
+                    <h3 className="order-success">Order Successful</h3>
+                    : null
+            }
         </div>
     )
 };

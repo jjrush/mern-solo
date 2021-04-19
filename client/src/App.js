@@ -23,6 +23,7 @@ function App() {
         size: "large", 
         crust: "regular",
         quantity: 1, 
+        price: 0,
         toppings: {},
     })
 
@@ -44,7 +45,7 @@ function App() {
                 <Order path="/order" loggedIn={loggedIn} order={order} setOrder={setOrder} userId={userId}/>
                 <Order path="/favorite" favorite={favorite} setFavorite={setFavorite} userId={userId} loggedIn={loggedIn} order={order} setOrder={setOrder}/>
                 <Order path="/random" random={random} setRandom={setRandom} loggedIn={loggedIn} order={order} setOrder={setOrder} userId={userId}/>
-                <Checkout path="/checkout" order={order}/>
+                <Checkout path="/checkout" order={order} userId={userId} setOrder={setOrder}/>
                 {/* account page for editing account */}
                 <AccountView path="/account" loggedIn={loggedIn} userId={userId}/>       
                 <NotFound default />

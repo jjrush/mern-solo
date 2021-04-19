@@ -24,42 +24,42 @@ const Order = (props) => {
         pepperoni: {
             value: false,
             price: 1,
-            name: "pepperoni",
+            name: "Pepperoni",
         },
         tomato:  {
             value: false,
             price: .5,
-            name: "tomato",
+            name: "Tomato",
         },
         avocado:  {
             value: false,
             price: 2,
-            name: "avocado",
+            name: "Avocado",
         }, 
         mushroom:  {
             value: false,
             price: .5,
-            name: "mushroom",
+            name: "Mushroom",
         },
         peppers:  {
             value: false,
             price: .5,
-            name: "peppers",
+            name: "Peppers",
         },
         bacon:  {
             value: false,
             price: 1,
-            name: "bacon",
+            name: "Bacon",
         },
         jalapeno:  {
             value: false,
             price: .5,
-            name: "jalapeno",
+            name: "Jalapeno",
         },
         pineapple:  {
             value: false,
             price: .5,
-            name: "pineapple",
+            name: "Pineapple",
         },
         canadian_bacon:  {
             value: false,
@@ -69,32 +69,32 @@ const Order = (props) => {
         sausage:  {
             value: false,
             price: 1,
-            name: "sausage",
+            name: "Sausage",
         }, 
         onion:  {
             value: false,
             price: .5,
-            name: "onion",
+            name: "Onion",
         },
         olives:  {
             value: false,
             price: .5,
-            name: "olives",
+            name: "Olives",
         },
         spinach:  {
             value: false,
             price: .5,
-            name: "spinach",
+            name: "Spinach",
         },
         mozzarella:  {
             value: false,
             price: .5,
-            name: "mozzarella",
+            name: "Mozzarella",
         },
         cheddar:  {
             value: false,
             price: .5,
-            name: "cheddar",
+            name: "Cheddar",
         },
     })
 
@@ -125,22 +125,6 @@ const Order = (props) => {
         console.log(order);
         console.log(user);
         navigate("checkout")
-        // axios.post("http://localhost:8000/api/user/" + userId, {user})
-        //     .then((res) => {
-        //         if(res.data.errors) {
-        //             console.log('error')
-        //             console.log(res.data.errors);
-        //         }
-        //         else {
-        //             console.log(res.data)
-        //             console.log("hereee")
-        //             navigate("/checkout");
-        //         }
-        //     })
-        //     .catch((err) => {
-        //         console.log('erro2r')
-        //         console.log(err);
-        //     })
     }
 
     const getRand = (c) => {
@@ -178,7 +162,7 @@ const Order = (props) => {
     }
 
     const getRandForToppings = (c) => {
-        let n = getRand(10);
+        let n = getRand(c);
         if ( n === 1 )
             return true;
         else 
@@ -186,21 +170,28 @@ const Order = (props) => {
     }
 
     const randSetToppings = (n) => {
-        toppings.pepperoni.value = getRandForToppings(10);
-        toppings.bacon.value = getRandForToppings(10);
-        toppings.mushroom.value = getRandForToppings(10);
-        toppings.avocado.value = getRandForToppings(10);
-        toppings.tomato.value = getRandForToppings(10);
-        toppings.peppers.value = getRandForToppings(10);
-        toppings.jalapeno.value = getRandForToppings(10);
-        toppings.onion.value = getRandForToppings(10);
-        toppings.canadian_bacon.value = getRandForToppings(10);
-        toppings.cheddar.value = getRandForToppings(10);
-        toppings.olives.value = getRandForToppings(10);
-        toppings.pineapple.value = getRandForToppings(10);
-        toppings.mozzarella.value = getRandForToppings(10);
-        toppings.spinach.value = getRandForToppings(10);
-        toppings.sausage.value = getRandForToppings(10);
+        for ( const key in toppings )
+        {
+            if ( getRandForToppings(10) )
+                toppings[key].value = true
+            else
+                toppings[key].value = false
+        }
+        // toppings.pepperoni.value = getRandForToppings(10);
+        // toppings.bacon.value = getRandForToppings(10);
+        // toppings.mushroom.value = getRandForToppings(10);
+        // toppings.avocado.value = getRandForToppings(10);
+        // toppings.tomato.value = getRandForToppings(10);
+        // toppings.peppers.value = getRandForToppings(10);
+        // toppings.jalapeno.value = getRandForToppings(10);
+        // toppings.onion.value = getRandForToppings(10);
+        // toppings.canadian_bacon.value = getRandForToppings(10);
+        // toppings.cheddar.value = getRandForToppings(10);
+        // toppings.olives.value = getRandForToppings(10);
+        // toppings.pineapple.value = getRandForToppings(10);
+        // toppings.mozzarella.value = getRandForToppings(10);
+        // toppings.spinach.value = getRandForToppings(10);
+        // toppings.sausage.value = getRandForToppings(10);
     }
 
     const getDate = () => {
@@ -224,12 +215,12 @@ const Order = (props) => {
                 console.log(res.data.errors);
             }
             else {
-                user.firstName=res.data.firstName;
-                user.lastName=res.data.lastName;
-                user.email=res.data.email;
-                user.password=res.data.password;
+                // user.firstName=res.data.firstName;
+                // user.lastName=res.data.lastName;
+                // user.email=res.data.email;
+                // user.password=res.data.password;
                 console.log(res);
-                console.log(user)
+                // console.log(user)
                 // setToppings(res.data.favorite)
                 // console.log(res)
             }

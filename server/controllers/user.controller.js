@@ -1,6 +1,8 @@
 const User = require('../models/user.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { db } = require('../models/user.model');
+const userRoutes = require('../routes/user.routes');
 
 module.exports = {
     register: (req, res) => {
@@ -18,13 +20,27 @@ module.exports = {
     },
 
     update: (req, res) => {
-        console.log(req.params.id);
-        console.log(req.body);
-        User.findByIdAndUpdate(req.params.id, req.body, {
+        console.log("update called:)")
+        // console.log(req.params.id);
+        // console.log(req.body);
+        const id = req.params.id;
+        // console.log(id);
+        const order = req.body;
+        
+        // db.collection("users").updateOne(
+        //     { _id: id },
+        //     { $push: { "orders": {order}}},
+        //     { upsert: true} 
+        // )
+        // console.log(db.collection('users').find({_id: id}))
+        // console.log(order);
+        User.findByIdAndUpdate(id, order, {
             new: true,
-            runValidators: true,
+            runValidators: true, 
         })
         .then((item) => {
+            console.log('good2go')
+            // console.log(res.json(item.body))
             res.json(item);
         })
         .catch((err) => {
@@ -32,22 +48,23 @@ module.exports = {
             console.log(err);
             res.json(err);
         });
+        
     },
 
-    create: (req, res) => {
-        // console.log(req.body);
+    // create: (req, res) => {
+    //     // console.log(req.body);
 
-        User.create( req.body )
-        .then((doc) => {
-            // console.log(newKaraokeSong);
-            res.json(doc);
-        })
-        .catch((err) => {
-            console.log("error found in create");
-            console.log(err);
-            res.json(err);
-        });
-    },
+    //     User.create( req.body )
+    //     .then((doc) => {
+    //         // console.log(newKaraokeSong);
+    //         res.json(doc);
+    //     })
+    //     .catch((err) => {
+    //         console.log("error found in create");
+    //         console.log(err);
+    //         res.json(err);
+    //     });
+    // },
 
     login: (req, res) => {
         // console.log(req.body);

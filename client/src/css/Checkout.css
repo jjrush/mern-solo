@@ -5,3 +5,7 @@
 .submit-order-btn {
     background-color: green;
 }
+
+.order-success {
+    color: green;
+}
