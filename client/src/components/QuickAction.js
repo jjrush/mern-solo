@@ -17,7 +17,6 @@ const QuickAction = (props) => {
         } else if ( text === "Random Pizza" ) 
         {
             // randomly choose toppings on order page
-            setRandom(true);
             navigate("/random")
         } 
     }

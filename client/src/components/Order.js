@@ -115,9 +115,9 @@ const Order = (props) => {
     }
 
     const handleToppingChange = (e) => {
-        setToppings({
-            [e.target.name]: e.target.value,
-        })
+        console.log(e.target.value);
+        toppings[e.target.value].value = !toppings[e.target.value].value;
+        forceUpdate();
     }
 
     const submitHandler = (e) => {
@@ -134,7 +134,6 @@ const Order = (props) => {
     }
 
     const randSetSize = (n) => {
-        console.log("size: " + n)
         let size = "";
         if( n === 0 )
             size="xlarge"
@@ -149,7 +148,6 @@ const Order = (props) => {
     }
 
     const randSetCrust = (n) => {
-        console.log("crust: " + n)
         let crust = "";
         if( n === 0 )
             crust="thin"
@@ -190,8 +188,10 @@ const Order = (props) => {
     }
 
     useEffect(() => {
+        
         if( !loggedIn )
             navigate("/login")
+        order.quantity=1;
         order.date = getDate();
         setOrder(order);
 
@@ -206,14 +206,14 @@ const Order = (props) => {
                     // user.lastName=res.data.lastName;
                     // user.email=res.data.email;
                     // user.password=res.data.password;
-                    console.log("axios get");
+                    // console.log("axios get");
                     // console.log(user)
                     // setToppings(res.data.favorite)
                     // console.log(res)
                 }
                 if( favorite )
                 {
-                    console.log('favorite');
+                    // console.log('favorite');
                     order.size = res.data.favorite.size;
                     order.crust = res.data.favorite.crust;
                     order.method = res.data.favorite.method;
@@ -233,13 +233,11 @@ const Order = (props) => {
             randSetCrust(getRand(4));
             randSetToppings();
             forceUpdate();
-            console.log(order);
+            // console.log(order);
         }
-        
+        forceUpdate();
     }, []);
-    console.log("woeifwoehgwoi")
-    console.log(order)
-console.log(toppings)
+
     return (
         <div>
             <h2>Craft-A-Pizza</h2>
