@@ -18,8 +18,8 @@ module.exports = {
     },
 
     update: (req, res) => {
-        // console.log(req.params.id);
-        // console.log(req.body);
+        console.log(req.params.id);
+        console.log(req.body);
         User.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
             runValidators: true,
@@ -29,6 +29,21 @@ module.exports = {
         })
         .catch((err) => {
             console.log("error found in update");
+            console.log(err);
+            res.json(err);
+        });
+    },
+
+    create: (req, res) => {
+        // console.log(req.body);
+
+        User.create( req.body )
+        .then((doc) => {
+            // console.log(newKaraokeSong);
+            res.json(doc);
+        })
+        .catch((err) => {
+            console.log("error found in create");
             console.log(err);
             res.json(err);
         });
@@ -115,4 +130,5 @@ module.exports = {
             res.json(err);
         });
     },
+
 }
