@@ -21,7 +21,7 @@ function App() {
         date: "",
         method: "carryout",
         size: "large", 
-        crust: "regular", 
+        crust: "regular",
         quantity: 1, 
         toppings: {},
     })
