@@ -31,8 +31,8 @@ const Account = (props) => {
                 setErrs(res.data.errors);
             }
             else {
-                console.log(res.data)
-                navigate("/account/");
+                // console.log(res.data)
+                navigate("/");
             }
         })
         .catch((err) => {
@@ -127,7 +127,6 @@ const Account = (props) => {
                                 
                             </div>
                         </form>
-                        <button className="cancel-btn-account" onClick={ () => navigate("/")}>Cancel</button>
                     </div>
                     <div className="order-details">
 
