@@ -36,7 +36,7 @@
 }
 
 .account-info {
-    margin-left: 100px;
+    /* margin-left: 100px; */
 }
 
 .password-field {
@@ -57,3 +57,14 @@
     margin-top: 10px;
 }
 
+.account-h2  {
+    text-align: left;
+    margin-left: 125px;
+}
+
+.account {
+    width: 40%;
+    display: inline;
+    float: left;
+    margin-left: 100px;
+}

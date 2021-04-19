@@ -1,0 +1,16 @@
+.list-orders {
+    margin-top: 20px;
+    display: inline-block;
+    width: 40%;
+    /* margin-bottom: -30000px; */
+}
+.list-orders h2{
+    padding: 0px;
+    margin: 0px;
+}
+
+.orders{
+    margin: 0px;
+    padding: 0px;
+}
+
